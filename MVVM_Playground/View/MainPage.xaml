@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    x:Class="MVVM_Playground.View.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:model="clr-namespace:MVVM_Playground.Model"
+    xmlns:viewmodel="clr-namespace:MVVM_Playground.ViewModel"
+    x:DataType="viewmodel:BaseViewModel">
+
+    <ScrollView>
+        <StackLayout
+            Margin="0,5,0,5">
+            <Label
+                x:Name="lblChannnelInfo"
+                Text="Channel Info list:"
+                TextColor="Gray"/>
+            <ListView ItemsSource="{Binding Channels}"
+            RowHeight="25">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Channel">
+                        <ViewCell>
+                            <StackLayout Spacing="5"
+                                         Orientation="Horizontal">
+                                <Label Text="{Binding Id,
+                                            StringFormat='Channel {0}:    '
+                                            }"
+                                       WidthRequest="85"/>
+                                <Label Text="{Binding FwVersion,
+                                            StringFormat='FwVer: {0}, '
+                                            }"
+                                       WidthRequest="100"/>
+                                <Label Text="{Binding Counter,
+                                            StringFormat='Counter: {0}, '
+                                            }"
+                                       WidthRequest="140"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>
